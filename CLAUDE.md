@@ -117,6 +117,9 @@
 - `Finance-integration-Yclients-` — интеграция с YClients API (визиты,
   расписание/смены, финансовые транзакции), Apps Script + clasp-доступ, диагностика
   недокументированного API через временный doGet-эндпоинт.
+- `Yclients_integration_tables_application` — форма (Apps Script Web App) → Google-таблица
+  → YClients (финансовые операции салона и магазина). Факты — в `PROJECT-yclients-finance-app.md`
+  здесь же, в claude_md. Живой статус/TODO — в `CLAUDE.md` того репозитория.
 
 ## Разделение документации проекта
 
