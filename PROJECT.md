@@ -205,13 +205,22 @@ C8 — статус последней загрузки. Чекбокс → `onE
 Redeploy-скрипт для этой сессии: `bash <scratchpad>/redeploy_new.sh` (push + новая версия +
 обновление деплоя), путь скрипта пересоздаётся заново в новых сессиях при необходимости.
 
-#### Деплой формы на Netlify
-Форма (`netlify/index.html`) также задеплоена на Netlify: https://finance-el-naturel.netlify.app
-Токен — в Google Drive рядом с clasp-credentials: id `16g_9WnZyOMjqHJyjXqGae02VKxMMSq4k`.
-Деплой: `npm install -g netlify-cli`, затем
-`NETLIFY_AUTH_TOKEN=<токен> netlify deploy --site 43fb3e56-ee06-495a-a308-611f9fb87077 --dir netlify --prod`.
-Netlify MCP-инструменты (если подключены) требуют подтверждения на каждый вызов — проще
-через CLI с токеном.
+#### Реальный фронтенд — Firebase, НЕ Netlify (обнаружено 08.07.2026)
+Netlify-версия формы (`netlify/index.html`, https://finance-el-naturel.netlify.app) —
+**заброшена** (упёрлись в лимиты Netlify на обновление проекта), сайт сейчас отдаёт 404.
+Реальный рабочий адрес Ирины: **https://planirovshik.web.app** (Firebase Hosting). Две вкладки,
+каждая — свой отдельный Apps Script backend:
+- **«Ввод»** → скрипт «Финансовые операции» (`Код.js` этого репозитория, деплой `...39w`,
+  см. выше).
+- **«Планировщик»** → ОТДЕЛЬНЫЙ скрипт **«Планировщик — просмотр (read-only)»** (scriptId
+  `1pSvtsCBCNllWSxeb7n6qemlGOVQzvpf9NsYM-AJ78a9D6EGDL9p5P1AB`, деплой
+  `AKfycbzMwEvJUtreH1-kVX1J4qvDODo5extq-x5EWe3MrRFJNsVQ1oZSbjs3CvJDmHP1Eak5rQ`) — НЕ в этом
+  репозитории (только в Drive/редакторе Apps Script). Читает **старую** таблицу «Планировщик
+  расходов» (`12zlcXPzG...`), не новую из Блока 4 — переключить на новую, когда та будет готова
+  к бою (см. STATUS.md репозитория `Yclients_integration_tables_application`).
+
+Файлы `netlify/index.html` в репозитории — оставлены как рабочий запасной вариант (не
+удалялись), но НЕ актуальный источник правды для формы ввода.
 
 
 ### Блок 3 — приложение-просмотрщик
