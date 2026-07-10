@@ -20,9 +20,11 @@ https://docs.google.com/spreadsheets/d/1gt3dtbbx-JigKtlPA9AdicRNewMDy29M86xaFSvg
   Журнал — очередь «в моменте», не архив: строки, ушедшие в YClients, чистятся (старше
   3 мес. — автоматически 1 числа; полная чистка — `?action=cleanupAllSent` скрипта планировщика).
 - Лист «Справочники»: Тип, Название, ID
-- Служебные листы (тоже здесь, НЕ в таблице Планировщик): «Webhook лог» (все входящие
-  вебхуки YClients), «Статус автоматики» (последний запуск каждого процесса: время, ✓/✗,
-  подробности — сюда пишут ОБА скрипта).
+- Служебные листы (тоже здесь, НЕ в таблице Планировщик): «Webhook лог» (входящие вебхуки
+  YClients — с 10.07.2026 фильтр: пишутся ТОЛЬКО `finances_operation`, доход+расход;
+  record/client/staff/goods_operations_* отбрасываются на входе как шум, к доходам/расходам
+  не относятся. Автоочистка раз в месяц, хранение 1 мес.), «Статус автоматики» (последний
+  запуск каждого процесса: время, ✓/✗, подробности — сюда пишут ОБА скрипта).
 
 #### Скрипт журнала «Финансовые операции» — Apps Script Web App
 Деплой: https://script.google.com/macros/s/AKfycbwb4Xb2u8WNO9bHOes1MihWH8FeI5jExClurhtVQpkpSVgP-Yw2anyVuow6upo-39w/exec
@@ -121,7 +123,11 @@ YClients; Планировщик наполняется ТОЛЬКО ИЗ YClien
 деплой `AKfycbzS77EUbsUFhDW_RiRD0vzkPWnODRrpcF_KPjmi44TQ2nijMHLgqxaD0j1klKx2wW_hdw`,
 `ANYONE_ANONYMOUS`). Ключевое:
 - `doPost` — приёмник вебхука YClients (Marketplace-приложение «Непубличное», Application
-  ID 46590, событие «Финансовая операция») → лог в «Webhook лог» → мгновенный пересчёт.
+  ID 46590). YClients шлёт вебхуки на всё подряд; в лог пишем и на пересчёт реагируем ТОЛЬКО
+  `resource==='finances_operation'` (фильтр 10.07.2026, см. лист «Webhook лог» выше) →
+  мгновенный пересчёт. Триггер `cleanupWebhookLog_` самоустанавливается из
+  `pullAllYClientsTransactions_` по флажку `WEBHOOK_CLEANUP_TRIGGER_SET` в Script Properties
+  (без ручного setupTriggers).
 - `pullAllYClientsTransactions_` — полный пересчёт месяца (вебхук / триггер 6 ч / вручную),
   LockService + тихий пропуск при наплыве. Знак расходов YClients — минус (инвертируется
   для строк 28-59). Операции без категории (`expense` пустой) — переводы между кассами,
@@ -130,7 +136,8 @@ YClients; Планировщик наполняется ТОЛЬКО ИЗ YClien
 - `backfillMonthFromYClients_` (`?action=backfillYC&year&month[&dry=1]`) — загрузка
   прошлого месяца в «Историю»; dry=1 — посчитать без записи.
 - `closeMonthAndUpdateNew_` (1/2/3 числа, 01:00) — архив месяца в «Историю» + сброс +
-  пересчёт нового; `cleanupOldJournalRows_` (1 числа, 03:00).
+  пересчёт нового; `cleanupOldJournalRows_` (1 числа, 03:00); `cleanupWebhookLog_` (1 числа,
+  04:00, хранение 1 мес.).
 - Служебные doGet-действия — только с `?key=ADMIN_KEY` (Script Properties). Полный список
   выдаёт сам doGet без action.
 - **Маркетплейс-выручка (Ozon/Я.Маркет) — особый учёт** (важно при сверке!): Ирина проводит
