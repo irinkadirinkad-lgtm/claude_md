@@ -253,6 +253,11 @@ M ТоварИТОГО* | N Кол-во продаж шт | O Себестоим
 **Интеграция этапа 2 (решено заранее):** отдельный НОВЫЙ Apps Script (изоляция), таблицы между
 собой НЕ связывать — обе тянут из YClients (единый источник); без второго вебхука: расписание +
 кнопка. Заполняет «Ввод» (вкл. нал/безнал по способу оплаты) и «ДР Факт» (статьи + история).
+- **Проект создан (11.07.2026):** `finance-integration/` в репозитории, standalone scriptId
+  `1ST_zHvsyOfUj_tvnsQEiirNxepqs1rlRed6djejNioPfC7j8i6CYK4mq`, деплой (web app, ANYONE_ANONYMOUS,
+  гейт `?key=` DIAG_SECRET) `AKfycbwKyxSZh6BwBLB-twobNr9jhK_Z8_b5onpC0A58PfpF4rlUMGrDJuYMwfyMtYtzDgDseg`.
+  Свои Script Properties (PARTNER_TOKEN, COMPANY_ID=328251, YC_LOGIN, YC_PASSWORD, USER_TOKEN).
+  Живой ход/блокеры — в STATUS.md репозитория `Yclients_integration_tables_application`, раздел «Блок A».
 
 ### Блок 2, часть 2 — Импорт сотрудников из YClients в «Ввод»
 
