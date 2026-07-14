@@ -298,6 +298,10 @@ M ТоварИТОГО* | N Кол-во продаж шт | O Себестоим
 - **Фронтенд:** `finance-report-app/` в репозитории. Firebase Hosting, проект `finance-elnaturel`,
   сайт `elnaturel-finance` → **https://elnaturel-finance.web.app**. Иконка — фирменный цветок
   (файлы `flower-*.png`). Самодостаточный `index.html` (шрифт/логотипы data-URI).
+- **Пароль на входе (14.07):** экран-гейт `.gate` + `<body class="locked">`, разблокировка снимает класс
+  (оверлей поверх, appWrap не прячется → графики не ломаются). SHA-256 на клиенте (хеш `89638b…`, тот же
+  пароль, что был на старом viewer), флаг `gatePassed` в localStorage. Осознанно слабая защита — от
+  случайной утечки ссылки, не от взлома (решение Ирины). Сброс входа = очистить данные сайта.
 - **Бэкенд:** `finance-report-app-api/` — отдельный Apps Script, ТОЛЬКО ЧТЕНИЕ (изолирован от
   `finance-integration/`, где есть запись). scriptId `1ilQnPzt9pxWXRk1F4M6vMaAJ7e5H-CeTcHXeMlVBvha-xiK5heev7q2Q`,
   деплой `AKfycbxwpqYCDc1y0G_4CqACUHih6fNuL0Px2BM96WfaSug-3cZqdOje3GRt8tnAOezyRBcbjg`
