@@ -511,6 +511,10 @@ finance-el-naturel.netlify.app давно отдавал 404, лимиты Netli
 
 ### Доступы и адреса
 - Репозиторий: `tilda-yclients-integracia-magazin` (приватный, создан Ириной вручную).
+  **Код залит 25.07 в `main`:** `apps-script/Code.js` + `appsscript.json` + `.clasp.json`,
+  живой статус — `STATUS.md` этого репозитория. Обновление кода: `cd apps-script && clasp push`.
+  ⚠️ `clasp deploy` создаёт НОВЫЙ URL — обновлять существующий deployment, иначе менять
+  адрес вебхука в Тильде.
 - Apps Script (свой, изолированный): scriptId
   `1-4nrE2WsR9tpD0EyXtqsxdnTCI_xP1ZQNrC2eGuJP27DEqnIjesWP87K`
 - Deploy web app = **адрес вебхука для Тильды**:
