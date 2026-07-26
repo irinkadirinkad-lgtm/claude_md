@@ -278,7 +278,8 @@ M ТоварИТОГО* | N Кол-во продаж шт | O Себестоим
 **Интеграция блока A — ГОТОВА (11.07.2026).** Отдельный изолированный Apps Script `finance-integration/`
 (standalone, тянет из YClients, таблицы между собой НЕ связаны; расписание, без вебхука).
 - **scriptId** `1ST_zHvsyOfUj_tvnsQEiirNxepqs1rlRed6djejNioPfC7j8i6CYK4mq`; **деплой** (web app,
-  ANYONE_ANONYMOUS, гейт `?key=` DIAG_SECRET в Code.js)
+  ANYONE_ANONYMOUS; служебные действия — ТОЛЬКО владельцу по `Session.getActiveUser()`,
+  пароля в коде нет с 26.07.2026; исключение — `appDay`/`appRange` под `APP_KEY`, только чтение)
   `AKfycbwKyxSZh6BwBLB-twobNr9jhK_Z8_b5onpC0A58PfpF4rlUMGrDJuYMwfyMtYtzDgDseg`.
   Script Properties: PARTNER_TOKEN, COMPANY_ID=328251, YC_LOGIN, YC_PASSWORD, USER_TOKEN(сам).
 - **Действия (doGet, гейт key):** `runMonth&month=YYYY-MM` (записать месяц); `previewMonth/previewDay&date=/
