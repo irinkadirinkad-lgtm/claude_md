@@ -196,8 +196,8 @@
   живой статус — `STATUS.md` того репозитория. Там же скил `my-skill-proverka-integracii` —
   готовая проверка здоровья интеграции, предлагать её самому.
 - `ozon-yclients-integracia` — интеграция Ozon ↔ YClients (маркетплейс, только FBS, склад
-  «BLOOMES»): остатки из YClients в Ozon (работает с 30.07.2026), заказы Ozon → списание
-  в YClients (в работе). Свой Apps Script, свои ключи. Факты — раздел «Интеграция Ozon ↔
+  «BLOOMES»): остатки из YClients в Ozon и заказы Ozon → списание в YClients — оба потока
+  работают с 30.07.2026. Свой Apps Script, свои ключи. Факты — раздел «Интеграция Ozon ↔
   YClients (маркетплейс)» файла `PROJECT.md`; живой статус — `STATUS.md` того репозитория.
   Там же скил `my-skill-proverka-ozon` — готовая проверка здоровья, предлагать её самому.
 
