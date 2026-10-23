@@ -30,6 +30,14 @@ clasp, ни браузер. Нужны только два токена.
 `401 «Не указан идентификатор пользователя»` = протух **USER_TOKEN** (PARTNER_TOKEN при этом
 может быть в порядке — проверяется запросом `/company/328251` вообще без user-токена).
 
+**Без USER_TOKEN** (в файле Drive его может не быть — так было 23.10) закрыты финансовые
+операции, товары читаются. Что работает в обход, только чтение:
+- журнал формы, «Статус автоматики» (итог каждого до-счёта), «Webhook лог» — Drive
+  `read_file_content` системной таблицы `1gt3dtbbx-JigKtlPA9AdicRNewMDy29M86xaFSvgbaU`;
+- «ДР Факт» целиком — Drive `download_file_content` таблицы `1Hpe21syTpJVl3E6LVHdznRhjRPXvmeGpwJTF3lhpGMM`
+  в xlsx (ответ большой, сохраняется в файл) → `jq -r .content | base64 -d` → openpyxl;
+- Планировщик по месяцам — `planner-viewer` `?action=dashboard&month=<«Сентябрь 2026»|current>`, без ключа.
+
 ## Как пользоваться
 
 `yc.py` лежит рядом с этим файлом.
