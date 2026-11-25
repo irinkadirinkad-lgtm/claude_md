@@ -1,7 +1,6 @@
 # Правила работы и поведения (общие, не про конкретный проект)
 
-Общие рабочие инструкции Ирины. «ClotMD» — название главной памяти, репозиторий
-`irinkadirinkad-lgtm/claude_md`.
+Общие правила работы с Ириной хранятся в [`AGENTS.md` в ветке `main` репозитория `irinkadirinkad-lgtm/claude_md`](https://github.com/irinkadirinkad-lgtm/claude_md/blob/main/AGENTS.md).
 
 ## Обязательный порядок начала работы в любом новом чате
 
